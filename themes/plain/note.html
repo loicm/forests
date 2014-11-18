@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="notes note">
+    <article class="h-entry">
+        <h1 class="p-name">{{ page.title}}</h1>
+        <p class="pub-date">Note publiée le <time class="dt-published" datetime="{{ page.date.datetime }}">{{ page.date.full }}</time></p>
+        <div class="e-content">
+        {{ page.content }}
+        </div>
+    </article>
+</section>
+{% endblock %}

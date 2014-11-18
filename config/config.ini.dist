@@ -1,0 +1,13 @@
+blog_title = "Ceci est le titre de votre carnet web"
+blog_url = "http://votredomaine.fr"
+blog_author = ""
+blog_author_email = ""
+
+base_path="/"
+
+theme = "plain"
+
+content_dir="/full/path/to/your/sources/directory/"
+output_dir="/full/path/to/your/output/html/directory/"
+
+deploy_rsync_dest="foo@domain.com:/path/to/docroot/"

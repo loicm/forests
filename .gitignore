@@ -1,0 +1,4 @@
+composer.lock
+config/config.ini
+themes/*
+vendor

@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+set_time_limit(0);
+
+require __DIR__.'/vendor/autoload.php';
+
+use loicm\Forests;
+
+
+$app = new Forests\App(
+    new Forests\Config(__DIR__.'/config/config.ini'),
+    'Forest',
+    '1.0.0'
+);
+$app->add(new Forests\Command\SiteBuild($app));
+$app->add(new Forests\Command\SiteDeploy($app));
+
+$app->run();

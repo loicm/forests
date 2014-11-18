@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{{ page.title}} - {{ blog.title }}</title>
+    <link rel="stylesheet" href="{{ blog.theme_path }}css/default.css">
+</head>
+<body>
+<header>
+    <h1>
+        <a href="{{ blog.base_path }}">{{ blog.title }}</a>
+    </h1>
+</header>
+
+{% if page.name == 'home' %}
+<section id="bio">
+    <p>Hello, This is my site!</p>
+</section>
+{% endif %}
+
+{% block content %}{% endblock %}
+
+<footer>
+    <p><a href="{{ blog.base_path }}feed/">Syndication</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+    "name": "loicm/forests",
+    "description": "Personal static blog generator",
+
+    "authors": [
+        {
+            "name": "Loïc Mathaud",
+            "email": "loic@mathaud.fr",
+            "homepage": "http://loic.mathaud.fr"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "loicm\\Forests\\": "src/"
+        }
+    },
+
+    "require": {
+        "symfony/console": "dev-master",
+        "cebe/markdown": "*",
+        "twig/twig": "1.16.2",
+        "mibe/feedwriter": "*@dev"
+    }
+}
