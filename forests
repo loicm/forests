@@ -4,15 +4,16 @@ set_time_limit(0);
 
 require __DIR__.'/vendor/autoload.php';
 
-use loicm\Forests;
+use loicm\Forests\App;
+use loicm\Forests\Config;
+use loicm\Forests\Command\SiteBuild;
+use loicm\Forests\Command\SiteDeploy;
 
+$config = new Config(__DIR__.'/config/config.ini');
+$config->checkMandatory();
 
-$app = new Forests\App(
-    new Forests\Config(__DIR__.'/config/config.ini'),
-    'Forest',
-    '1.0.0'
-);
-$app->add(new Forests\Command\SiteBuild($app));
-$app->add(new Forests\Command\SiteDeploy($app));
+$app = new App($config, 'Forests', '1.0.0');
+$app->add(new SiteBuild($app));
+$app->add(new SiteDeploy($app));
 
 $app->run();

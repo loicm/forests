@@ -20,6 +20,7 @@
         "symfony/console": "dev-master",
         "cebe/markdown": "*",
         "twig/twig": "1.16.2",
-        "mibe/feedwriter": "*@dev"
+        "mibe/feedwriter": "*@dev",
+        "league/pipeline": "^0.2.2"
     }
 }

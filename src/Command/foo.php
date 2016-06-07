@@ -30,6 +30,7 @@ class SiteBuild extends Base
         $processPages = (new Pipeline())
             ->pipe(new ListPages())
             ->pipe(new GeneratePages($this->app->config));
+
         $processNotes = (new Pipeline())
             ->pipe(new ListNotes())
             ->pipe(new GenerateNotes($this->app->config))
