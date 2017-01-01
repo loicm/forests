@@ -8,10 +8,9 @@ L'Astrée, première partie, livre premier :
 
 Forests is a simple static blog generator.
 
-Start by renaming `forests/config/config.ini.dist` to `forests/config/config.ini`,
-Then adapt the `config.ini` to your needs.
+Start by renaming `.env-sample` to `.env`, then adapt the `.env` to your needs.
 
-Run `composer install` to install dependencies (I might provide a full package ready to use)
+Run `composer install` to install dependencies.
 
 There are two commands:
 

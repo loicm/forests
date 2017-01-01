@@ -1,22 +1,21 @@
 <?php
+
 namespace loicm\Forests;
+
+use DotEnv\DotEnv;
 
 class Config
 {
-    protected $properties;
-
     /**
      * Create instance of Config
      *
      * @param string $file_path path to config file
      */
-    public function __construct($file_path)
+    public function __construct(DotEnv $dotenv)
     {
-        if (!is_readable($file_path)) {
-            throw new \Exception("config file not found");
-        }
+        $dotenv->load();
 
-        $this->properties = $this->setDefaults(parse_ini_file($file_path));
+        $this->setDefaults();
     }
 
     /**
@@ -46,36 +45,31 @@ class Config
      * @param array $config
      * @return array $config
      */
-    protected function setDefaults($config)
+    protected function setDefaults()
     {
         $app_dir = realpath(__DIR__.'/../').'/';
 
-        $config['app_dir'] = $app_dir;
+        $this->app_dir = $app_dir;
 
-        if (!isset($config['base_path']) || $config['base_path'] == '') {
-            $config['base_path'] = '/';
+        if ($this->base_path === false || $this->base_path == '') {
+            $this->base_path = '/';
         }
-        if (!isset($config['content_dir']) || !is_dir($config['content_dir'])) {
-            $config['content_dir'] = $app_dir . 'content/';
+        if ($this->content_dir === false || !is_dir($this->content_dir)) {
+            $this->content_dir = $this->app_dir . 'content/';
         }
-        if (!isset($config['output_dir'])) {
-            $config['output_dir'] = $app_dir . 'content_html/';
+        if ($this->output_dir === false) {
+            $this->output_dir = $this->app_dir . 'content_html/';
         }
-        if (!isset($config['theme']) || $config['theme'] == '') {
-            $config['theme'] = 'default';
+        if ($this->theme === false || $this->theme == '') {
+            $this->theme = 'plain';
         }
-        $config['themes_dir'] = $app_dir . 'themes/';
-        $config['theme_dir'] = $app_dir . 'themes/' . $config['theme'] . '/';
-        $config['theme_path'] = $config['base_path'] . 'themes/' . $config['theme'] .'/';
-
-        return $config;
+        $this->themes_dir = $this->app_dir . 'themes/';
+        $this->theme_dir = $this->app_dir . 'themes/' . $this->theme . '/';
+        $this->theme_path = $this->base_path . 'themes/' . $this->theme .'/';
     }
 
     public function __get($name)
     {
-        if (array_key_exists($name, $this->properties)) {
-            return $this->properties[$name];
-        }
-        return false;
+        return getenv(strtoupper($name));
     }
 }
