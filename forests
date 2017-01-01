@@ -4,12 +4,13 @@ set_time_limit(0);
 
 require __DIR__.'/vendor/autoload.php';
 
+use Dotenv\Dotenv;
 use loicm\Forests\App;
 use loicm\Forests\Config;
 use loicm\Forests\Command\SiteBuild;
 use loicm\Forests\Command\SiteDeploy;
 
-$config = new Config(__DIR__.'/config/config.ini');
+$config = new Config(new Dotenv(__DIR__));
 $config->checkMandatory();
 
 $app = new App($config, 'Forests', '1.0.0');
