@@ -56,7 +56,7 @@ class Utils
 
     public static function getContentOnly($file_content)
     {
-        $real_lines = '';
+        $real_lines = [];
 
         $lines = explode("\n", $file_content);
         foreach($lines as $line) {
